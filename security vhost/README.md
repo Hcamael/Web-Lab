@@ -39,8 +39,8 @@ $ vim /bin/lnmp
         #include enable-php.conf;
         location ~ [^/]\.php(/|$)
         {
-            # comment try_files $uri =404; to enable pathinfo
-            try_files $uri =404;
+            # comment try_files \$uri =404; to enable pathinfo
+            try_files \$uri =404;
             fastcgi_pass  unix:/tmp/php-cgi.sock;
             fastcgi_index index.php;
             include fastcgi.conf;

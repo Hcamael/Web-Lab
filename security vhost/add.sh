@@ -1,3 +1,4 @@
+#!/bin/sh
 if [ ! -n "$1" ];then
         echo "Please enter vhost name";
         exit 1
@@ -12,5 +13,5 @@ sed -i "s/www/$1/g" /usr/local/php/etc/php-fpm-$1.conf
 sed -i "s/php-fpm/php-fpm-$1/g" /usr/local/php/etc/php-fpm-$1.conf
 echo $1 | lnmp vhost add
 sed -i "s/php-cgi/php-cgi-$1/g" /usr/local/php/etc/php-fpm-$1.conf /usr/local/nginx/conf/vhost/$1.conf
-/etc/init.d/php-fpm start $1
+/etc/init.d/php-fpm restart $1
 /etc/init.d/nginx restart
